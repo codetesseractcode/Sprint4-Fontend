@@ -96,27 +96,130 @@ Cancel inventory (return to available)
 }
 ```
 
-## Setup Instructions
+## Quick Start for New Developers
 
-1. **Install dependencies:**
+### Prerequisites
+Before you begin, ensure you have the following installed on your machine:
+
+- **Node.js** (version 18.0 or higher) - [Download here](https://nodejs.org/)
+- **npm** (comes with Node.js) or **yarn**
+- **Git** - [Download here](https://git-scm.com/)
+
+### Installation Steps
+
+1. **Clone the repository:**
+   ```bash
+   git clone <your-github-repo-url>
+   cd Inventory-management-systum-sprint3F
+   ```
+
+2. **Install dependencies:**
    ```bash
    npm install
    ```
+   *This will install all required packages including React, TypeScript, Redux Toolkit, and development tools.*
 
-2. **Configure API URL:**
-   Edit `src/config/api.ts` to match your backend URL if different from `http://localhost:8080/api`
+3. **Verify TypeScript setup:**
+   ```bash
+   npx tsc --noEmit
+   ```
+   *This checks if TypeScript compilation works without errors.*
 
-3. **Start development server:**
+4. **Configure API URL (if needed):**
+   - Open `src/config/api.ts`
+   - Update the `BASE_URL` if your backend runs on a different port or domain
+   - Default is `http://localhost:8080/api`
+
+5. **Start the development server:**
    ```bash
    npm run dev
    ```
+   *The app will open at `http://localhost:5173`*
 
-4. **Build the project (TypeScript compilation + Vite build):**
+6. **Ensure backend is running:**
+   - Make sure your backend API is running on port 8080
+   - Test with: `http://localhost:8080/api/inventory`
+
+### Development Commands
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run TypeScript type checking
+npx tsc --noEmit
+
+# Run ESLint
+npm run lint
+```
+
+### Troubleshooting
+
+**If you encounter CORS errors:**
+- Ensure your backend allows requests from `http://localhost:5173`
+- Add CORS configuration to your backend
+
+**If TypeScript errors appear:**
+- Run `npm install` again to ensure all type definitions are installed
+- Check that you're using Node.js version 18+
+
+**If the app doesn't load:**
+- Verify the backend API is running on port 8080
+- Check browser console for error messages
+- Ensure no other service is using port 5173
+
+### First-Time Setup Validation
+
+After installation, verify everything works:
+
+1. **Check if the app starts correctly:**
    ```bash
-   npm run build
+   npm run dev
    ```
+   - Should open `http://localhost:5173`
+   - You should see the inventory management interface
+   - Sidebar should be visible on the left
 
-5. **Make sure your backend is running on port 8080**
+2. **Verify TypeScript compilation:**
+   ```bash
+   npx tsc --noEmit
+   ```
+   - Should complete without errors
+   - Confirms all TypeScript types are correct
+
+3. **Test API connection:**
+   - If you see "Loading..." continuously, check if backend is running
+   - Open browser developer tools (F12) to check for network errors
+   - Verify backend is accessible at `http://localhost:8080/api/inventory`
+
+### IDE Recommendations
+
+For the best development experience, we recommend:
+
+- **VS Code** with these extensions:
+  - TypeScript Importer
+  - ES7+ React/Redux/React-Native snippets
+  - Redux DevTools
+  - Prettier - Code formatter
+  - ESLint
+
+### Team Development Notes
+
+- **State Management**: Uses Redux Toolkit - check `src/store/` for state logic
+- **API Calls**: All API interactions are in `src/services/inventoryApi.ts`
+- **Types**: TypeScript interfaces are defined in `src/types/index.ts`
+- **Styling**: CSS classes are in `src/pages/InventoryDashboard.css`
+- **Components**: All React components are TypeScript (.tsx) files in `src/components/`
+
+## Setup Instructions
+
+## Additional Setup (Advanced)
 
 ## Environment Configuration
 
