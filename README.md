@@ -1,28 +1,29 @@
 # Inventory Management System - Frontend
 
-This is the React frontend for the Inventory Management System. It communicates with a backend API running on port 8080.
+This is a modern TypeScript React frontend for the Inventory Management System. It communicates with a backend API running on port 8080 and uses Redux Toolkit for state management.
 
 ## Architecture
 
-This frontend follows SOLID principles and clean architecture:
+This frontend follows SOLID principles and clean architecture with TypeScript for type safety:
 
 ### Components (Single Responsibility)
-- `Sidebar.jsx` - Navigation and branding
-- `AddInventory.jsx` - Form for adding new inventory
-- `InventoryActions.jsx` - Form for inventory operations (adjust, reserve, allocate, cancel)
-- `InventoryTable.jsx` - Display inventory data
-- `ErrorBoundary.jsx` - Error handling
-- `Notification.jsx` - User feedback system
+- `Sidebar.tsx` - Navigation and branding
+- `InventoryActions.tsx` - Form for inventory operations (add, adjust, reserve, allocate, cancel)
+- `InventoryTable.tsx` - Display inventory data with sorting and filtering
+- `ErrorBoundary.tsx` - Error handling component
+- `Notification.tsx` - User feedback system
+
+### State Management (Redux Toolkit)
+- `src/store/index.ts` - Typed Redux store configuration
+- `src/store/inventorySlice.ts` - Inventory state slice with async thunks
 
 ### Services (Dependency Inversion)
-- `InventoryService.js` - API communication layer
+- `src/services/inventoryApi.ts` - Typed API communication layer
 
-### Hooks (State Management)
-- `useInventory.js` - Custom hook for inventory state management
-
-### Configuration
-- `src/config/api.js` - API configuration (change your backend URL here)
-- `src/constants/index.js` - Application constants
+### Types & Configuration
+- `src/types/index.ts` - TypeScript type definitions and interfaces
+- `src/config/api.ts` - API configuration (change your backend URL here)
+- `src/constants/index.ts` - Application constants
 
 ## Backend API Requirements
 
@@ -103,14 +104,19 @@ Cancel inventory (return to available)
    ```
 
 2. **Configure API URL:**
-   Edit `src/config/api.js` to match your backend URL if different from `http://localhost:8080/api`
+   Edit `src/config/api.ts` to match your backend URL if different from `http://localhost:8080/api`
 
 3. **Start development server:**
    ```bash
    npm run dev
    ```
 
-4. **Make sure your backend is running on port 8080**
+4. **Build the project (TypeScript compilation + Vite build):**
+   ```bash
+   npm run build
+   ```
+
+5. **Make sure your backend is running on port 8080**
 
 ## Environment Configuration
 
@@ -121,7 +127,7 @@ REACT_APP_API_URL=http://localhost:8080/api
 REACT_APP_API_TIMEOUT=5000
 ```
 
-Then uncomment the alternative configuration in `src/config/api.js`.
+Then uncomment the alternative configuration in `src/config/api.ts`.
 
 ## CORS Configuration
 
@@ -138,35 +144,70 @@ In Spring Boot, you can add:
 npm run build
 ```
 
-The built files will be in the `dist/` directory.
+This will run TypeScript compilation followed by Vite build. The built files will be in the `dist/` directory.
 
 ## Features
 
+- ✅ **TypeScript Integration** - Full type safety and better developer experience
+- ✅ **Redux State Management** - Centralized state with Redux Toolkit
+- ✅ **Modern UI** - Clean, responsive design with CSS variables
 - ✅ Add new inventory items
 - ✅ Adjust inventory quantities
 - ✅ Reserve inventory for orders
 - ✅ Allocate reserved inventory
 - ✅ Cancel allocations/reservations
-- ✅ Real-time inventory table
+- ✅ Real-time inventory table with sorting
 - ✅ Error handling and user feedback
-- ✅ Loading states
-- ✅ Responsive design
+- ✅ Loading states and async operations
+- ✅ Responsive design for mobile and desktop
+- ✅ Type-safe API integration
 
 ## Technology Stack
 
-- **React 19** - UI framework
+- **React 19** - UI framework with TypeScript
+- **TypeScript 5.6+** - Type-safe JavaScript development
+- **Redux Toolkit** - Modern Redux for state management
+- **React-Redux** - React bindings for Redux
 - **Vite** - Build tool and dev server
-- **Modern JavaScript** - ES6+ features
-- **CSS3** - Custom styling with CSS variables
-- **Fetch API** - HTTP client for API calls+ Vite
+- **CSS3** - Modern styling with CSS variables and responsive design
+- **Axios** - HTTP client for API calls
+- **ESLint** - Code linting and formatting
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Structure
 
-Currently, two official plugins are available:
+```
+src/
+├── components/          # Reusable React components (.tsx)
+├── config/             # API and app configuration
+├── constants/          # Application constants
+├── pages/              # Main application pages
+├── services/           # API service layer
+├── store/              # Redux store and slices
+├── types/              # TypeScript type definitions
+├── utils/              # Utility functions
+└── main.tsx           # Application entry point
+```## Migration Notes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project has been fully migrated from JavaScript to TypeScript with the following improvements:
 
-## Expanding the ESLint configuration
+### What Changed
+- ✅ All `.js`/`.jsx` files converted to `.ts`/`.tsx`
+- ✅ Added comprehensive TypeScript type definitions
+- ✅ Implemented Redux Toolkit for state management
+- ✅ Moved all inline styles to external CSS
+- ✅ Simplified and modernized UI components
+- ✅ Added type-safe API layer with proper error handling
+- ✅ Removed legacy code and unused dependencies
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Breaking Changes
+- All import paths now use `.tsx`/`.ts` extensions
+- State management moved from custom hooks to Redux
+- API layer completely rewritten with TypeScript interfaces
+- CSS classes reorganized with modern naming conventions
+
+### Development Benefits
+- **Type Safety**: Catch errors at compile time
+- **Better IntelliSense**: Improved autocomplete and documentation
+- **Refactoring Support**: Safe code transformations
+- **State Predictability**: Redux DevTools integration
+- **Performance**: Optimized re-renders with Redux selectors
