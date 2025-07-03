@@ -1,0 +1,447 @@
+/* CSS Custom Properties (Variables) */
+:root {
+    --sidebar-width: 270px;
+    --sidebar-bg: #000000;
+    --sidebar-text: #ffffff;
+    --main-bg: #ffffff;
+    --button-primary: #007bff;
+    --button-primary-hover: #0056b3;
+    --button-text: #ffffff;
+    --table-bg: #e3f2fd;
+    --font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    --border-radius: 0.25rem;
+    --transition-duration: 0.3s;
+    
+    /* Uniform box sizing variables */
+    --box-height: 36px;
+    --box-min-width: 120px;
+    --box-padding: 8px 16px;
+    --box-font-size: 0.95em;
+}
+
+/* Modern CSS Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Body and Layout */
+body {
+    display: flex;
+    margin: 0;
+    font-family: var(--font-family);
+    line-height: 1.5;
+    background-color: var(--main-bg);
+    color: #000000;
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Loading State */
+.loading-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    min-height: 100vh;
+    padding: var(--spacing-lg) var(--spacing-sm);
+    flex-shrink: 0;
+    text-align: center;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md) 0;
+}
+
+.logo-frame {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.logo-frame img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin: var(--spacing-md) 0;
+}
+
+.sidebar ul li a {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 1.1em;
+    display: inline-block;
+    transition: text-decoration var(--transition-duration) ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+    text-decoration: underline;
+    outline: none;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: var(--spacing-xl);
+    background-color: var(--main-bg);
+    min-width: 0;
+    margin-right: -12%;
+}
+
+/* Header */
+#header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header h1 {
+    color: #000000;
+    margin: 0;
+}
+
+/* Uniform Box Sizing for All Form Elements */
+button,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    height: var(--box-height);
+    min-width: var(--box-min-width);
+    padding: var(--box-padding);
+    font-size: var(--box-font-size);
+    font-family: inherit;
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    margin: var(--spacing-sm) var(--spacing-sm) var(--spacing-md) 0;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: baseline;
+    line-height: 1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Modern Button Styles */
+#addInventoryButton,
+#actionButton,
+button {
+    color: var(--button-text);
+    background-color: var(--button-primary);
+    border: 1px solid var(--button-primary);
+    cursor: pointer;
+    transition: all var(--transition-duration) ease;
+}
+
+#addInventoryButton:hover,
+#addInventoryButton:focus,
+#actionButton:hover,
+#actionButton:focus,
+button:hover,
+button:focus {
+    background-color: var(--button-primary-hover);
+    border-color: var(--button-primary-hover);
+    outline: none;
+}
+
+#addInventoryButton:focus,
+#actionButton:focus,
+button:focus {
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Inputs and Form Controls */
+input,
+select,
+textarea {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    transition: border-color var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--button-primary);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Special handling for textarea to allow vertical expansion */
+textarea {
+    min-height: var(--box-height);
+    resize: vertical;
+    align-items: flex-start;
+    padding-top: 8px;
+}
+
+/* Table Styles */
+#inventoryTable {
+    width: 88%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-md);
+    background-color: var(--table-bg);
+    table-layout: fixed;
+}
+
+#inventoryTable th,
+#inventoryTable td {
+    width: calc(100% / var(--table-columns, 6));
+    padding: var(--spacing-sm);
+    text-align: center;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Inventory Table Section */
+#inventoryTableSection {
+    border: 1px solid #2196f3;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    background-color: #e3f2fd;
+    color: #000000;
+    width: 100%;
+    max-width: 1200px;
+    overflow: auto;
+    position: relative;
+}
+
+#inventoryTableSection h2 {
+    color: #000000;
+    margin-bottom: var(--spacing-md);
+}
+
+#inventoryTable {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #2196f3;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+}
+
+.table-header {
+    background-color: #2196f3 !important;
+    color: white !important;
+}
+
+.table-row-even {
+    background-color: #bbdefb;
+}
+
+.table-row-odd {
+    background-color: #ffffff;
+}
+
+.table-empty-state {
+    text-align: center;
+    padding: var(--spacing-md);
+    background-color: #e3f2fd;
+    color: #000000;
+}
+
+.table-empty-hint {
+    font-size: 0.9em;
+    margin-top: var(--spacing-sm);
+}
+
+/* Inventory Actions Section */
+.inventory-actions-section {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.inventory-actions-title {
+    color: #000000;
+    margin: 0 0 16px 0;
+}
+
+.action-select {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    padding: var(--box-padding);
+    font-size: var(--box-font-size);
+    margin-bottom: 16px;
+    min-width: var(--box-min-width);
+}
+
+.action-button {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    border-radius: var(--border-radius);
+    padding: var(--box-padding);
+    font-size: var(--box-font-size);
+    cursor: pointer;
+    transition: background-color var(--transition-duration);
+}
+
+.action-button:hover {
+    background-color: #0056b3;
+}
+
+/* Notification Component */
+.notification {
+    position: fixed;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    z-index: 1000;
+    max-width: 400px;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-duration) ease;
+}
+
+.notification.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.notification.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.notification.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.notification.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.notification-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    min-width: auto;
+    height: auto;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity var(--transition-duration) ease;
+}
+
+.notification-close:hover {
+    opacity: 1;
+    background: none;
+}
+
+/* Loading State */
+.loading-state {
+    text-align: center;
+    padding: var(--spacing-md);
+}
+
+/* Error Boundary */
+.error-boundary {
+    padding: var(--spacing-md);
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: var(--border-radius);
+    margin: var(--spacing-md);
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .main-content {
+        padding: var(--spacing-md);
+    }
+
+    button,
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="password"],
+    select,
+    textarea {
+        width: 100%;
+        min-width: auto;
+    }
+}
